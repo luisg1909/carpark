@@ -7,6 +7,7 @@ import { EntradaComponent } from './entrada/entrada.component';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,10 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,13 +1,29 @@
-<h2>Por favor eliga un ticket </h2>
 
+        
 
+   
+    
 
-<p>entrada works!</p>
+  <div class="main-div">
+    <h2>Por favor eliga un ticket </h2>
+
+    <div class="example-button-row">
+
+        <button class="my-class" (click)="generar()" mat-raised-button color="accent">Generar</button>
+        <button  mat-raised-button color="accent"></button>
+        <button class="my-class2" mat-raised-button >{{ticket}}</button>
+    </div>
+
+    
+<br>
+   <h1 class="font1">
+    Crud de vehiculos
+  </h1>
+
 <div class="example-button-row">
-    <button mat-raised-button>Basic</button>
-    <button mat-raised-button color="primary">Primary</button>
-    <button mat-raised-button color="accent">Accent</button>
-    <button mat-raised-button color="warn">Warn</button>
-    <button mat-raised-button disabled>Disabled</button>
-    <a mat-raised-button href="https://www.google.com/" target="_blank">Link</a>
-  </div>
+    <button mat-raised-button (click)="crear()" color="primary">Insertar Vehiculo </button>
+    <button mat-raised-button color="accent">Editar Vehiculo</button>
+    <button mat-raised-button color="warn">Borrar vehiculo</button>
+</div>
+
+</div>

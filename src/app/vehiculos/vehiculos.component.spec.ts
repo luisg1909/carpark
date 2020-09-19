@@ -65,7 +65,7 @@ describe('VehiculosComponent', () => {
       let hora="5:11"
       let parqueo="1"
       let nivel=""
-       component.Registro(nombre,placa,hora,parqueo,""); 
+       component.Registro(nombre,placa,hora,parqueo,nivel); 
       
       } ).toThrow(new Error("fallo registro"));
 
@@ -78,7 +78,7 @@ describe('VehiculosComponent', () => {
       let hora="7:22"
       let parqueo=""
       let nivel="2"
-       component.Registro(nombre,placa,hora,parqueo,""); 
+       component.Registro(nombre,placa,hora,parqueo,nivel); 
       
       } ).toThrow(new Error("fallo registro"));
 
@@ -101,4 +101,34 @@ describe('VehiculosComponent', () => {
 
   });
 
+
+  it('probar que el nivel sea negativo', () => {
+          
+    expect( function(){ 
+      let nombre="mazda"
+      let placa="3-777"
+      let hora="7:22"
+      let parqueo=""
+      let nivel="-2"
+       component.Registro(nombre,placa,hora,parqueo,nivel); 
+      
+      } ).toThrow(new Error("fallo registro"));
+
+  });
+
+
+
+  it('probar que la placa sea nulo', () => {
+          
+    expect( function(){ 
+      let nombre="mazda"
+      let placa=null
+      let hora="7:22"
+      let parqueo=""
+      let nivel="-2"
+       component.Registro(nombre,placa,hora,parqueo,nivel); 
+      
+      } ).toThrow(new Error("fallo registro"));
+
+  });
 });

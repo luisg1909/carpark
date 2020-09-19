@@ -1,1 +1,62 @@
-<p>vehiculos works!</p>
+
+
+ 
+
+
+<div class="main-div">
+    <h2>Por favor Ingrese los datos del vehiculo </h2>
+
+    
+   
+    
+    <div class="example-button-row">
+
+            <div class="row">
+                <div class="large-6 columns">
+                  <label>        <button class="my-class2" mat-raised-button >Nombre</button>
+                    
+                    <input type="text"    [(ngModel)]="nombre" >
+                  </label>                 
+                </div>  
+                <div class="large-6 columns">
+
+                <label> <button class="my-class2" mat-raised-button >Placa</button>
+                    
+                    <input type="text"    [(ngModel)]="placa" >
+                </label>
+                </div>  
+
+                <div class="large-6 columns">
+
+                <label> <button class="my-class2" mat-raised-button >Hora</button>
+                    
+                    <input type="text"   [(ngModel)]="Hora" >
+                </label>
+                </div>  
+
+                <div class="large-6 columns">
+
+                <label>  <button class="my-class2" mat-raised-button >Parqueo</button>
+                    
+                    <input   [(ngModel)]="parqueo" type="text">
+                </label>
+                </div>  
+
+                <div class="large-6 columns">
+
+                <label> <button class="my-class2" mat-raised-button >Nivel</button>
+                    
+                    <input type="text"   [(ngModel)]="nivel" >
+                </label>  
+               </div>  
+
+              </div>
+      
+              <div >
+
+                <button  (click)="generar()" mat-raised-button color="blue" class="btn btn-primary btn-lg">Ingresar</button>
+              </div>
+
+        
+    
+    </div>

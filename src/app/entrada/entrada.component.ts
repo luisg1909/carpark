@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioService } from '.././servicio.service';
+import { VehiculosComponent } from '.././vehiculos/vehiculos.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-entrada',
@@ -6,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entrada.component.scss']
 })
 export class EntradaComponent implements OnInit {
+  ticket=""
+  constructor(private servicio:ServicioService,private router:Router
+  ) { }
+ generar(){
 
-  constructor() { }
+  this.ticket=  this.servicio.obtenerhora()
+  this.servicio.generarhora(this.ticket)
+ }
+ crear(){
+  this.router.navigate(['/ingresov']);
+ }
 
   ngOnInit() {
     //test
