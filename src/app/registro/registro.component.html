@@ -1,1 +1,44 @@
-<p>registro works!</p>
+<div class="padre">
+    <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    
+        <mat-card class="box">
+          <mat-card-header>
+            <mat-card-title>Crear Usuario</mat-card-title>
+          </mat-card-header>
+      
+          <form [formGroup]="loginform" (submit)="entrar()" class="example-form">
+            <mat-card-content>
+              <mat-form-field class="example-full-width">
+                <input matInput id="nombreFormControl" formControlName="nombreFormControl" placeholder="Nombre">
+                <mat-error *ngIf="nombreFormControl.hasError('required')">
+                  Campo <strong>obligatorio</strong>
+                </mat-error>  
+              </mat-form-field>
+      
+              <mat-form-field class="example-full-width">
+                <input id="apellidoFormControl" formControlName="apellidoFormControl" matInput placeholder="Apellido">
+              
+                <mat-error *ngIf="apellidoFormControl.hasError('required')">
+                    Campo <strong>obligatorio</strong>
+                </mat-error>
+    
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput id="telFormControl" formControlName="telFormControl" placeholder="Telefono" Type="number">
+                <mat-error *ngIf="telFormControl.hasError('required')">
+                  Campo <strong>obligatorio</strong>
+                </mat-error>  
+              </mat-form-field>
+              <mat-form-field class="example-full-width">
+                <input matInput id="dpiFormControl" formControlName="dpiFormControl" placeholder="DPI" type="number">
+                <mat-error *ngIf="dpiFormControl.hasError('required')">
+                  Campo <strong>obligatorio</strong>
+                </mat-error>  
+              </mat-form-field>
+            </mat-card-content>
+            <button type="submit" [disabled]="!loginform.valid" mat-raised-button color="primary" class="btn-block">Crear</button>
+          </form>
+        </mat-card>
+      
+      </div>
+    </div>
