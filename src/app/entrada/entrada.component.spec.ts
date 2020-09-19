@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EntradaComponent } from './entrada.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EntradaComponent', () => {
   let component: EntradaComponent;
@@ -8,6 +10,18 @@ describe('EntradaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        
+        HttpClientTestingModule,
+        RouterTestingModule
+
+        /*  RouterTestingModule.withRoutes([
+
+          {path: '', component: CrearPreguntaComponent}, {path: 'servicios', component: ServiciosService}
+        ]),
+
+       */
+       ],
       declarations: [ EntradaComponent ]
     })
     .compileComponents();
