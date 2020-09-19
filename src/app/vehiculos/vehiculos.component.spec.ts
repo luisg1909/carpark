@@ -73,10 +73,10 @@ describe('VehiculosComponent', () => {
     expect( function(){ 
       let nombre="mazda"
       let placa="3-777"
-      let modelo="mazda"
+      let modelo="njjj"
      
       
-      let result=component.Registro2(nombre,placa,modelo);
+      let result=component.Registro(nombre,placa,modelo);
       expect(true).toBeTruthy()
 
   

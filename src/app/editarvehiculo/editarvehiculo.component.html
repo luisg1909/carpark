@@ -1,1 +1,60 @@
-<p>editarvehiculo works!</p>
+<div class="conta">
+</div>
+<div class="conta2">
+
+    <h1 class="font1">
+        Id de vehiculo:
+    </h1>
+    <div class="example-button-row">
+        <input type="text"    [(ngModel)]="nombre" >
+        <button mat-raised-button (click)="generar()" color="primary">Traer data </button>
+    </div>
+    
+</div>
+
+
+
+<div class="container">
+
+    <div class="row">
+      <div class="col-sm">
+        Nombre    
+      </div>
+      <div class="col-sm">
+        <input type="text"    [(ngModel)]="nombre" >
+    </div>
+      
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            Placa    
+        </div>
+        <div class="col-sm">
+            <input type="text"    [(ngModel)]="placa" >
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-sm">
+            Modelo    
+        </div>
+        <div class="col-sm">
+            <input type="text"    [(ngModel)]="modelo" >
+        </div>
+        
+      </div>
+
+      <div >
+
+        <div class="conta">
+            <button (click)="editar1()" type="button" class="btn btn-primary btn-lg btn-block">Editar</button>
+
+        </div>
+
+
+    
+    </div>
+
+
+  </div>

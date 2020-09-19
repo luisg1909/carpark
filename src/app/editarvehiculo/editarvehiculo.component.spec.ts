@@ -5,6 +5,7 @@ import { ServicioService } from '.././servicio.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { RouterTestingModule } from '@angular/router/testing';
 import {HttpTestingController} from '@angular/common/http/testing';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 describe('EditarvehiculoComponent', () => {
   let component: EditarvehiculoComponent;
@@ -16,8 +17,8 @@ describe('EditarvehiculoComponent', () => {
       declarations: [ EditarvehiculoComponent ],
       imports: [
         HttpClientTestingModule,
-        RouterTestingModule
-
+        RouterTestingModule,
+        FormsModule, ReactiveFormsModule
         // MatPaginator, MatSort
       ],
       providers: [ServicioService]
@@ -85,7 +86,7 @@ describe('EditarvehiculoComponent', () => {
       let id="1"
 
       
-      let result=component.Editar2(nombre,placa,modelo,id);
+      let result=component.Editar(nombre,placa,modelo,id);
       expect(true).toBeTruthy()
 
   
