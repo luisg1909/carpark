@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioService } from '.././servicio.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-borrarvehiculo',
@@ -11,14 +12,22 @@ export class BorrarvehiculoComponent implements OnInit {
   constructor(private servicio:ServicioService) { }
   data:any
 
+  getdatalist(){
+    let ob =  this.servicio.getDataas( )
+    let obs1 = from(ob);
+    return obs1    
+  }
   ngOnInit() {
 
-    this.servicio.getData().subscribe(msg=>{
-
+    this. getdatalist().subscribe(datu=>{
+      console.log(datu); 
+     datu.pipe().subscribe(msg=>{
       this.data=msg
-   ;}, err=>{
-     this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+
+
+      
+  ;}); 
+    }); 
 
      return true
 
@@ -39,7 +48,37 @@ id:string=""
      return true
 
   }
+
+  borrarvehiculot(){
+
+
+      let ob =  this.servicio.borrarasincrono("vehiculos", this.id )
+      let obs1 = from(ob);
+      return obs1      
+   
+  
+     
+  }
+
   borrarvehiculo(){
+
+    this.borrarvehiculot().subscribe(msg=>{
+      msg.subscribe(msg=>{
+
+      this.servicio.message("vehiculo Borrado correctamente","success") 
+    }); 
+   ;}, err=>{
+     this.servicio.message("Ocurrio un error ","error") 
+     console.log(err); throw "";
+     throw new Error('fallo')   
+
+    }); 
+
+
+     return true
+
+  }
+  /* borrarvehiculo(){
 
     this.servicio.getdeleteur("vehiculos", this.id).subscribe(msg=>{
       this.servicio.message("vehiculo Borrado correctamente","success") 
@@ -54,7 +93,7 @@ id:string=""
 
      return true
 
-  }
+  } */
 
   Borrar(id:string) {
     if( !id )  {
@@ -64,14 +103,9 @@ id:string=""
         this.servicio.message("El id es vacio, revise","error")
         throw new Error('fallo borrado')   }
 
-
  return true
 
   }
-  Borrar2(id) {
-    return true
 
-
-  }
 
 }

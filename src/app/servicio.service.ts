@@ -56,32 +56,50 @@ export class ServicioService {
     
   }
   url="http://localhost:3000"
-  getPosturl(name:string,form):any{
+/*   getPosturl(name:string,form):any{
     if(name.length<1 || form==null)  {
       throw new Error('fallo')
        }
     return this.http.post(this.get_domain()+'/'+name,form)
-}
+} */
 getPuturl(name:string,id:string,form):any{
   if(name.length<1 ||id.length<1  ||form==null)  {
     throw new Error('fallo')
      }
   return this.http.put(this.get_domain()+'/'+name+"/"+id,form)
 }
-getdeleteur(name:string,id):any{
+/* getdeleteur(name:string,id):any{
   if(name.length<1 ||id.length<1 )  {
     throw new Error('fallo')
      }
   return this.http.delete(this.get_domain()+'/'+name+"/"+id)
-}
-getDataget(id:string){
+} */
+/* getDataget(id:string){
   if(id.length<1 )  {
     throw new Error('fallo')
      }
   return this.http.get(this.get_domain()+'/vehiculos/'+id)
-}
-getData(){
+} */
+/* getData(){
   return this.http.get(this.get_domain()+'/vehiculos/')
+} */
+
+//metodos asincronicos
+async getPostDatapreg(id){
+  return await  this.http.get(this.get_domain()+'/vehiculos'+'/'+id)
+}
+async getDataas(){
+  return await  this.http.get(this.get_domain()+'/vehiculos/')
+}
+
+
+async getPosturlas(name:string,form){
+
+  return await this.http.post(this.get_domain()+'/'+name,form)
+}
+
+async borrarasincrono(name:string,id){
+  return await this.http.delete(this.get_domain()+'/'+name+"/"+id)
 }
 /*   getStuff() {
     let params = new HttpParams().append('testparam', 'testvalue')

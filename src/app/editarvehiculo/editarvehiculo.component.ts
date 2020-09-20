@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioService } from '.././servicio.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-editarvehiculo',
@@ -17,22 +19,34 @@ export class EditarvehiculoComponent implements OnInit {
 
   data:any
 
-  
+  getdatalist(){
+    let ob =  this.servicio.getDataas( )
+    let obs1 = from(ob);
+    return obs1    
+  }
   ngOnInit() {
-    this.id="e"
 
-    
+    this. getdatalist().subscribe(datu=>{
+      console.log(datu); 
+     datu.pipe().subscribe(msg=>{
+      this.data=msg
 
-    this.servicio.getData().subscribe(msg=>{
+
+      
+  ;}); 
+    }); 
+
+    // this.id="e"
+
+/*     this.servicio.getData().subscribe(msg=>{
       
       this.data=msg
 
-      if(!this.data)throw "";
 
 
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+     console.log(err); throw "";});  */
 
  
 
@@ -54,33 +68,53 @@ export class EditarvehiculoComponent implements OnInit {
 
      return true
 
-  }
 
+  }
+  Traervehiculo9(){
+    let ob =  this.servicio.getPostDatapreg( this._id)
+
+    let obs1 = from(ob);
+    return obs1
+  }
   Traervehiculo(){
 
-    this.servicio.getDataget(this._id).subscribe(msg=>{
-    console.log('las preguntas son->',msg);
-    console.log('el names es ->',msg ["nombre"]);
+/* let ob =  this.servicio.getPostDatapreg( this._id)
 
-    this.nombre=msg ["nombre"]
-    this.placa=msg ["placa"]
-    this.modelo=msg ["modelo"]
-    this.id=msg ["_id"]
+let observable = from(ob);
 
-   ;}, err=>{
+observable.subscribe(datu=>{ */
+
+  this. Traervehiculo9().subscribe(datu=>{
+   console.log(datu); 
+  datu.pipe().subscribe(msg=>{
+    console.log(msg); 
+
+  this.nombre=msg ["nombre"]
+  this.placa=msg ["placa"]
+  this.modelo=msg ["modelo"]
+  this.id=msg ["_id"]
+
+
+  ;}, err=>{
+    this.nombre=null
+
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
-
+    }); 
      return true
 
+
   }
+
   editarvehiculo(){
     const body = { id:this.id,nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
 
-    
+    console.log("el bodyname es  ",body.nombre);
     if(!this.id || ! this.nombre || !this.placa || !this.modelo )  {
-      this.servicio.message("Hay valores nulos, revise","error")
-      throw new Error('fallo edición')  }
+       this.servicio.message("Hay valores nulos, revise","error")
+       throw new Error('fallo edición')
+      // return false
+      }
 
 
     console.log("el server da ",body); 
@@ -88,11 +122,9 @@ export class EditarvehiculoComponent implements OnInit {
     
 
     this.servicio.getPuturl("vehiculos", this.id,body).subscribe(msg=>{
-      this.servicio.message("vehiculo editado correctamente","success") 
+       this.servicio.message("vehiculo editado correctamente","success") 
 
-   ;}, err=>{
-     this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+   ;}); 
   
      return true
 
@@ -103,10 +135,10 @@ export class EditarvehiculoComponent implements OnInit {
     if(!nombre || !placa || !modelo || !id )  {
       this.servicio.message("Hay valores nulos, revise","error")
       throw new Error('fallo edición')  }
-   /*  if(nombre.length<1 || placa.length<1|| modelo.length<1|| id.length<1)  {
+     if(nombre.length<1 || placa.length<1|| modelo.length<1|| id.length<1)  {
         this.servicio.message("Hay valores vacios, revise","error")
         throw new Error('fallo edición')   }
- */
+ 
 
  return true
     

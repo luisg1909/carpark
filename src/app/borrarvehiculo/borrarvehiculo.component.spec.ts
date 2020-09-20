@@ -61,6 +61,34 @@ describe('BorrarvehiculoComponent', () => {
   });
 
 
+  it("variables declaradas", () => {
+    //let msg="si"
+        expect(component.id).toEqual('');
+      
+        
+      });
+  it('probar que borre el vehiculo en un llamado asincrono con un dato real', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+  
+       component.id="5f6694a1e300eb28f494d95b"
+
+       let result=component.borrarvehiculot().subscribe(msg=>{
+        msg.subscribe(msg=>{
+  
+      }); 
+     ;}, err=>{
+      throw "";
+  
+      }); 
+  
+      } ).not.toThrow();
+
+  });
+
+
   it('probar que el id de vehiculo sea nulo', () => {
           
     expect( function(){ 
@@ -76,10 +104,10 @@ describe('BorrarvehiculoComponent', () => {
   it('probar que todos los datos sean correctos', () => {
           
     expect( function(){ 
-      let id=""
+      let id="888"
 
       
-      let result=component.Borrar2(id);
+      let result=component.Borrar(id);
       expect(true).toBeTruthy()
 
   
@@ -88,7 +116,32 @@ describe('BorrarvehiculoComponent', () => {
 
   });
 
+  it('probar que mande a traer la lista del servicio de carros', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+  
 
+       let result=component.getdatalist().subscribe(datu=>{
+        console.log(datu); 
+       datu.pipe().subscribe(msg=>{
+
+        expect(msg).not.toBeFalsy;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+           console.log(err); throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
   it('probar que Borrar1 retorne true cuando id es nulo', () => {
     // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
     
@@ -112,7 +165,7 @@ describe('BorrarvehiculoComponent', () => {
     
       
        let result=component.borrarvehiculo();
-      } ).toThrow(new Error("fallo"));
+      } ).not.toThrow();
 
   });
 

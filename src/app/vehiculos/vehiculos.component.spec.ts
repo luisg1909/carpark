@@ -102,7 +102,35 @@ describe('VehiculosComponent', () => {
 
   });
 
+  it('probar que inserte un vehiculo', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+  
+       component.nombre="mazda 2001"
+       component.placa="1255551"
+       component.modelo="2001-b"
 
+       let result=component.iNGRESAvehiculo9().subscribe(datu=>{
+        datu.pipe().subscribe(msg=>{
+
+
+        expect(msg ).toBeNaN;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+           console.log(err); throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
 
   it('probar que ingresarvehiculo retorne true', () => {
     // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
