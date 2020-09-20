@@ -30,6 +30,11 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
+<<<<<<< HEAD
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to practica!');
   });*/
+=======
+    expect(compiled.querySelector('h1').textContent).toContain('Bienvenido a practica!');
+  });
+>>>>>>> 85d466b159216c91aa7877827afe457fe1a458bb
 });

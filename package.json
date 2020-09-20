@@ -21,8 +21,13 @@
     "@angular/platform-browser": "~8.0.0",
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
+    "@material/button": "^7.0.0",
+    "angular-bootstrap-md": "^9.4.0",
     "rxjs": "~6.4.0",
+<<<<<<< HEAD
     "sinon": "^9.0.3",
+=======
+>>>>>>> 85d466b159216c91aa7877827afe457fe1a458bb
     "sweetalert2": "^10.2.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

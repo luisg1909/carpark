@@ -1,0 +1,24 @@
+.main-div{
+    // height: 100vh;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 12%;
+  }
+  .font1{
+    font-size:27px
+  }
+
+  .escondido{
+    display: none;
+  }
+  .my-class{
+    width: 100px!important;
+    height: 33px;
+    min-width: unset!important;
+}
+
+.my-class2{
+    background-color:white;
+    color:blue
+}
