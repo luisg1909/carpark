@@ -88,6 +88,18 @@ describe('RegistroComponent', () => {
     expect(component.nombreFormControl).not.toBeNull();
   });
 
+  it("validar apellido", function() {
+    expect(component.apellidoFormControl).not.toBeNull();
+  });
+
+  it("validar telefono", function() {
+    expect(component.telFormControl).not.toBeNull();
+  });
+
+  it("validar dpi", function() {
+    expect(component.dpiFormControl).not.toBeNull();
+  });
+
   it('probar que el nombre venga vacio', () => {
           
     expect( function(){ 
@@ -158,7 +170,53 @@ describe('RegistroComponent', () => {
 
   });
 
+  it('probar que ningun dato venga', () => {
+          
+    expect( function(){ 
+      let nombre="";
+    let apellido="";
+    let telefono='';
+    let dpi='';
+  
+     let result= component.validarCampos(nombre,apellido,telefono,dpi); 
+     expect(true).toBeTruthy()
+      } ).not.toThrow();
 
+  });
+
+
+  it('probar crear usuarios', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+  
+       let nombre="Juan"
+       let apellido="1255551"
+       let telefono="2001-b"
+       let dpi="2984413810101"
+       let name='usuarios';
+       const jsonData={nombre:nombre,apellido:apellido,telefono:telefono,dpi:dpi}
+
+       let result=component.crearUser(name,jsonData).subscribe(datu=>{
+        datu.pipe().subscribe(msg=>{
+
+
+        expect(msg ).toBeNaN;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+            throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
 
 
 

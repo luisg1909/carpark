@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup, FormGroupDirective, NgForm, Validators,FormBuilder} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { ServicioService } from '.././servicio.service';
+import { from } from 'rxjs';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -51,13 +52,26 @@ export class RegistroComponent implements OnInit {
   validarDPI(Fdpi:string){
 
     if (Fdpi.length==13) {
-      console.log('si cumple con 13 digitos');
+      //console.log('si cumple con 13 digitos');
       return true;  
     }else{
       return false;
     }
 
     
+  }
+
+  crearUser(name,jsonData){
+    let Fnombre=this.loginform.controls['nombreFormControl'].value;
+    let Fapellido=this.loginform.controls['apellidoFormControl'].value;
+    let Ftelefono=this.loginform.controls['telFormControl'].value;
+    let Fdpi=this.loginform.controls['dpiFormControl'].value;
+
+    jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
+    name='usuarios';
+    let ob=this.servicio.NuevoUsuario(name,jsonData);
+    let ob1=from(ob);
+    return ob1;
   }
 
   crear(Fnombre,Fapellido,Ftelefono,Fdpi){
@@ -70,13 +84,16 @@ export class RegistroComponent implements OnInit {
     
     if(this.validarDPI(Fdpi.toString())){
       const jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
-      this.servicio.NuevoUsuario('usuarios',jsonData).subscribe(inf=>{
-        console.log(inf);
-        this.servicio.message("Usuario creado correctamente","success");
+      this.crearUser('usuarios',jsonData).subscribe(inf=>{
+        //console.log(inf);
+        inf.subscribe(da=>{
+          this.servicio.message("Usuario creado correctamente","success");
+        })
+        
        return 'success';
       },err=>{
         this.servicio.message("Ocurrio un error ","error") 
-        console.log(err); throw "";
+        //console.log(err); throw "";
         
       })
     }else{
@@ -89,7 +106,7 @@ export class RegistroComponent implements OnInit {
 
   validarCampos(Fnombre,Fapellido,Ftelefono,Fdpi){
     if (!Fnombre ||!Fapellido || !Ftelefono || !Fdpi) {
-      console.log('hay valores nulos');
+      //console.log('hay valores nulos');
       throw new Error('fallo registro')  
     } 
     return true;

@@ -18,12 +18,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 import { ServicioService } from '../servicio.service';
 
-import * as sinon from 'sinon';
+import {HttpTestingController} from '@angular/common/http/testing';
+
 
 describe('DetalleComponent', () => {
   let component: DetalleComponent;
   let fixture: ComponentFixture<DetalleComponent>;
-  let collaborator: ServicioService;
+  
+  let httpMock: HttpTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -101,9 +103,109 @@ describe('DetalleComponent', () => {
 
        component.eliminarUser(id);
       
-      } ).toThrow(new Error("fallo eliminacion"));
+      } ).toBeTruthy();
 
   });
+
+  it('probar que liste los usuarios', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+  
+       component.nombre="Juan"
+       component.apellido="1255551"
+       component.telefono="2001-b"
+       component.dpi="2984413810101"
+
+       let result=component.cargarInfo().subscribe(datu=>{
+        datu.pipe().subscribe(msg=>{
+
+
+        expect(msg ).toBeNaN;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+            throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
+
+  it('probar que elimine un usuario', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      let id="5f66afc0365cc137d00975cf"
+
+       let result=component.eliminar(id).subscribe(datu=>{
+        datu.pipe().subscribe(msg=>{
+
+
+        expect(msg ).toBeNaN;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+            throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
+
+  it('probar que actualice un usuario', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      let id="5f66afc0365cc137d00975cf"
+
+       let result=component.infoUpdate(id).subscribe(datu=>{
+        datu.pipe().subscribe(msg=>{
+
+
+        expect(msg ).toBeNaN;
+
+        ;}, err=>{
+          this.nombre=null
+      
+           this.servicio.message("Ocurrio un error ","error") 
+            throw "";}); 
+          }); 
+
+        // expect(result).toBeTruthy();
+
+
+      } ).not.toThrow();
+
+  });
+
+  /*it('hacer un mock del listado,', () => {
+
+
+
+    const service: ServicioService = TestBed.get(ServicioService);
+    
+    
+    
+    const request = httpMock.expectOne( service.get_domain()+'/usuarios');
+    //  expect(request.request.method).not.toBe('GET');
+    
+    
+    });
+*/
 
   /*it('should get the teams (mock)', () => {
     

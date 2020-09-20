@@ -28,11 +28,11 @@ export class ServicioService {
 
   }
 
-  NuevoUsuario(name,form){
+  /*NuevoUsuario(name,form){
     return this.http.post(this.get_domain()+'/'+name,form);
   }
 
-  getUsuarios(){
+  /*getUsuarios(){
     return this.http.get(this.get_domain()+'/'+'usuarios');
   }
 
@@ -42,6 +42,22 @@ export class ServicioService {
 
   actualizarUsuario(id,form){
     return this.http.put(this.get_domain()+'/usuarios/'+id,form);
+  }*/
+
+  async getUsuarios(){
+    return await this.http.get(this.get_domain()+'/'+'usuarios');
+  }
+
+  async eliminarUsuario(id){
+    return await this.http.delete(this.get_domain()+'/'+'usuarios/'+id);
+  }
+
+  async actualizarUsuario(id,form){
+    return await this.http.put(this.get_domain()+'/usuarios/'+id,form);
+  }
+
+  async NuevoUsuario(name,form){
+    return await this.http.post(this.get_domain()+'/'+name,form);
   }
 
 
