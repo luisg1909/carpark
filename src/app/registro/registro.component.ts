@@ -16,18 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
-  info:string;
-  public nombre:string;
-
   loginform: FormGroup;
-
-  /*emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),
-  ]);
-  passFormControl = new FormControl('', [
-    Validators.required
-  ]);*/
 
   nombreFormControl = new FormControl('', [
     Validators.required
@@ -48,24 +37,15 @@ export class RegistroComponent implements OnInit {
   constructor(private fb: FormBuilder,private servicio:ServicioService) { }
 
   ngOnInit() {
-    this.nombre="test";
+  
 
     this.loginform = this.fb.group({
-  
-      //emailFormControl: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-      //passFormControl: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(200)]],
       nombreFormControl: ['', [Validators.required]],
       apellidoFormControl: ['', [Validators.required]],
       telFormControl: ['', [Validators.required,Validators.pattern("^[0-9]+$")]],
       dpiFormControl: ['', [Validators.required,Validators.pattern("^[0-9]+$")]],
 
     });
-  }
-
-  Registro_test(a:any,b:any){
-   
-    throw new Error('fallo registro')
-
   }
 
   validarDPI(Fdpi:string){
@@ -80,43 +60,40 @@ export class RegistroComponent implements OnInit {
     
   }
 
-  crear(){
-    console.log('el nombre es->',
-    this.loginform.controls['nombreFormControl'].value);
-    console.log('el dpi es->',
-    this.loginform.controls['dpiFormControl'].value);
+  crear(Fnombre,Fapellido,Ftelefono,Fdpi){
 
-    var Fnombre=this.loginform.controls['nombreFormControl'].value;
-    var Fapellido=this.loginform.controls['apellidoFormControl'].value;
-    var Ftelefono=this.loginform.controls['telFormControl'].value;
-    var Fdpi=this.loginform.controls['dpiFormControl'].value;
+    Fnombre=this.loginform.controls['nombreFormControl'].value;
+    Fapellido=this.loginform.controls['apellidoFormControl'].value;
+    Ftelefono=this.loginform.controls['telFormControl'].value;
+    Fdpi=this.loginform.controls['dpiFormControl'].value;
 
+    
     if(this.validarDPI(Fdpi.toString())){
       const jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
       this.servicio.NuevoUsuario('usuarios',jsonData).subscribe(inf=>{
         console.log(inf);
         this.servicio.message("Usuario creado correctamente","success");
-        this.info='success';
+       return 'success';
       },err=>{
         this.servicio.message("Ocurrio un error ","error") 
         console.log(err); throw "";
-        this.info='error';
+        
       })
     }else{
-      this.info='error';
-    }
-
-    
-
-    
-  }
-
-  registro(msg:string){
-    if (msg=='success') {
-      return 'success';
-    } else {
       return 'error';
     }
+    
+    
+
+  }
+
+  validarCampos(Fnombre,Fapellido,Ftelefono,Fdpi){
+    if (!Fnombre ||!Fapellido || !Ftelefono || !Fdpi) {
+      console.log('hay valores nulos');
+      throw new Error('fallo registro')  
+    } 
+    return true;
+
   }
 
 }

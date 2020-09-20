@@ -1,34 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicioService } from '../servicio.service';
-import {FormControl, FormGroup,FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: string;
-  symbol: number;
-}
-
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1234567891236, name: 'Andrea', weight: 'Morales', symbol: 45874521},
-  {position: 7894561234587, name: 'Jose', weight: 'Garcia', symbol: 75314595},
-  {position: 7896545874985, name: 'Alan', weight: 'Gonzales', symbol: 45786315},
-  {position: 2486321148551, name: 'Gabriela', weight: 'Lopez', symbol: 453779},
-  {position: 4451321898746, name: 'Esteban', weight: 'Giron', symbol: 45623155},
-  /*{position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},*/
-];
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-detalle',
@@ -37,13 +9,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class DetalleComponent implements OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','accion'];
+  public displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','accion'];
   public dataSource;// = ELEMENT_DATA;
   actualizar:boolean;
   nombre:string;
   apellido:string;
   telefono:string;
   dpi:string;
+  id:string;
 
   emailFormControl = new FormControl('', [
  
@@ -58,7 +31,6 @@ export class DetalleComponent implements OnInit {
  
   ]);
 
-  matcher = new MyErrorStateMatcher();
 
   constructor(private serv:ServicioService) { }
 
@@ -69,7 +41,7 @@ export class DetalleComponent implements OnInit {
   }
 
   cargarTabla(){
-    let info;
+    
     this.serv.getUsuarios().subscribe(data=>{
       console.log('la data es->',data);
       this.dataSource=data;
@@ -84,10 +56,14 @@ export class DetalleComponent implements OnInit {
       console.log('la data es ',data);
       this.serv.message("usuario eliminado","success");
       this.cargarTabla();
+      
     },err=>{
       console.log('el error es ',err);
       this.serv.message("ha ocurrido un error","error");
+      
     })
+    throw new Error('fallo eliminacion') 
+    return true;
   }
 
   actualizarUser(element){
@@ -97,10 +73,28 @@ export class DetalleComponent implements OnInit {
     this.apellido=element.apellido;
     this.telefono=element.telefono;
     this.dpi=element.dpi;
+    this.id=element._id;
+    this.cargarTabla();
+    return element;
+
+    
   }
 
   guardar(){
     this.actualizar=false;
+    console.log('el usuairo a eliminar tiene el id ',this.id);
+    const jsonData={nombre:this.nombre,apellido:this.apellido,telefono:this.telefono,dpi:this.dpi}
+
+    this.serv.actualizarUsuario(this.id,jsonData).subscribe(inf=>{
+      console.log('la data es ',inf);
+      this.serv.message("usuario Actualizado","success");
+      
+    },err=>{
+      console.log('la data es ',err);
+      this.serv.message("Hubo un error","error");
+      
+    })
+   
   }
   
 

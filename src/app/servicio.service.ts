@@ -40,5 +40,9 @@ export class ServicioService {
     return this.http.delete(this.get_domain()+'/'+'usuarios/'+id);
   }
 
+  actualizarUsuario(id,form){
+    return this.http.put(this.get_domain()+'/usuarios/'+id,form);
+  }
+
 
 }
