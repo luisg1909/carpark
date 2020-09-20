@@ -340,6 +340,23 @@ describe('EditarvehiculoComponent', () => {
 
   });
 
+
+
+
+ it('hacer un mock del listado,', () => {
+
+
+
+const service: ServicioService = TestBed.get(ServicioService);
+
+
+
+const request = httpMock.expectNone( service.get_domain()+'/vehiculos/');
+//  expect(request.request.method).not.toBe('GET');
+
+
+});
+  
  /*  it('cargar titulo nombre', () => {
     
     expect(component.displayedColumns).toContain("name");
@@ -400,8 +417,8 @@ describe('EditarvehiculoComponent', () => {
     
 
 
-  //   afterEach(() => {
-  //     httpMock.verify();
-  // })
+    afterEach(() => {
+       httpMock.verify();
+   })
 
 });
