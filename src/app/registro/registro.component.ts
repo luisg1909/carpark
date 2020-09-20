@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl,FormGroup, FormGroupDirective, NgForm, Validators,FormBuilder} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { ServicioService } from '.././servicio.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,13 +21,13 @@ export class RegistroComponent implements OnInit {
 
   loginform: FormGroup;
 
-  emailFormControl = new FormControl('', [
+  /*emailFormControl = new FormControl('', [
     Validators.required,
     Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"),
   ]);
   passFormControl = new FormControl('', [
     Validators.required
-  ]);
+  ]);*/
 
   nombreFormControl = new FormControl('', [
     Validators.required
@@ -44,15 +45,15 @@ export class RegistroComponent implements OnInit {
     Validators.required
   ]);
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,private servicio:ServicioService) { }
 
   ngOnInit() {
     this.nombre="test";
 
     this.loginform = this.fb.group({
   
-      emailFormControl: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-      passFormControl: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(200)]],
+      //emailFormControl: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      //passFormControl: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(200)]],
       nombreFormControl: ['', [Validators.required]],
       apellidoFormControl: ['', [Validators.required]],
       telFormControl: ['', [Validators.required,Validators.pattern("^[0-9]+$")]],
@@ -69,6 +70,30 @@ export class RegistroComponent implements OnInit {
 
   validarDPI(dpi:any){
     return true;
+  }
+
+  crear(){
+    console.log('el nombre es->',
+    this.loginform.controls['nombreFormControl'].value);
+    console.log('el dpi es->',
+    this.loginform.controls['dpiFormControl'].value);
+
+    var Fnombre=this.loginform.controls['nombreFormControl'].value;
+    var Fapellido=this.loginform.controls['apellidoFormControl'].value;
+    var Ftelefono=this.loginform.controls['telFormControl'].value;
+    var Fdpi=this.loginform.controls['dpiFormControl'].value;
+
+    const jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
+
+    
+    this.servicio.NuevoUsuario('usuarios',jsonData).subscribe(inf=>{
+      console.log(inf);
+      this.servicio.message("Usuario creado correctamente","success") 
+    },err=>{
+      this.servicio.message("Ocurrio un error ","error") 
+      console.log(err); throw "";
+ 
+    })
   }
 
 }

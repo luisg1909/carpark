@@ -28,12 +28,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class DetalleComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','accion'];
-  dataSource = ELEMENT_DATA;
+  public dataSource;// = ELEMENT_DATA;
 
   constructor() { }
 
   ngOnInit() {
-    
+    this.cargarTabla();
+  }
+
+  cargarTabla(){
+    this.dataSource=ELEMENT_DATA;
+    return this.dataSource;
   }
 
 }

@@ -6,7 +6,7 @@
             <mat-card-title>Crear Usuario</mat-card-title>
           </mat-card-header>
       
-          <form [formGroup]="loginform" (submit)="entrar()" class="example-form">
+          <form [formGroup]="loginform"  class="example-form">
             <mat-card-content>
               <mat-form-field class="example-full-width">
                 <input matInput id="nombreFormControl" formControlName="nombreFormControl" placeholder="Nombre">
@@ -36,7 +36,7 @@
                 </mat-error>  
               </mat-form-field>
             </mat-card-content>
-            <button type="submit" [disabled]="!loginform.valid" mat-raised-button color="primary" class="btn-block">Crear</button>
+            <button (click)="crear()" [disabled]="!loginform.valid" mat-raised-button color="primary" class="btn-block">Crear</button>
           </form>
         </mat-card>
       

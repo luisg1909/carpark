@@ -54,4 +54,10 @@ describe('DetalleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('cargar tabla', () => {
+    expect(component.cargarTabla()).toBeDefined();;
+  });
+
+
 });

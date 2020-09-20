@@ -24,6 +24,7 @@ import {
 
 } from "@angular/material";
 import { DetalleComponent } from './detalle/detalle.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { DetalleComponent } from './detalle/detalle.component';
     DetalleComponent
   ],
   imports: [
-    
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
