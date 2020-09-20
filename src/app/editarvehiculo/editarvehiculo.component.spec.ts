@@ -113,7 +113,120 @@ describe('EditarvehiculoComponent', () => {
 
   });
 
+  it('probar que editarvehiculo pase porque si estan definidos los campos', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      component.nombre="sss",
+      component.placa="sss", component.modelo="sss", component.id="sss"
 
+       let result=component.editarvehiculo();
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+  it('probar que editarvehiculo de throw porque estan vacios los campos', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.editarvehiculo();
+
+       
+
+      } ).toThrow( new Error('fallo edición') );
+
+  });
+  it('probar que ngOnInit retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+     
+       let result=component.ngOnInit();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+  it('probar que ngOnInit retorne toThrow cuando no este definido el parametro url', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+      const service: ServicioService = TestBed.get(ServicioService);
+      service.url=""
+      
+       let result=component.ngOnInit();
+
+       
+      } ).not.toThrow();
+
+  });
+  it('probar que editar1 sea valido  cuando sean datos no validos', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+      component.nombre="mazda",
+      component.placa="1-900", component.modelo="2001", component.id="s-0022"
+       let result=component.editar1();
+
+       
+
+      } ).not.toThrow();
+  });
+
+
+
+  it('probar que editar1 de throw cuando sean datos nulos', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.editar1();
+
+       
+
+      } ).toThrow( );
+
+  });
+
+
+  it('probar que Traervehiculo retorne true cuando _id es un valor dado', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+       component._id="121212"
+
+       let result=component.Traervehiculo();
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
+  it('probar que Traervehiculo retorne false o de throw cuando _id no esta definido', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+
+       let result=component.Traervehiculo();
+
+       
+
+      } ).toThrow();
+
+  });
 /*  describe('when fetching all stuff', () => {
     it('should make a GET request', async(() => {
         
@@ -147,8 +260,8 @@ describe('EditarvehiculoComponent', () => {
     
 
 
-    afterEach(() => {
-      httpMock.verify();
-  })
+  //   afterEach(() => {
+  //     httpMock.verify();
+  // })
 
 });

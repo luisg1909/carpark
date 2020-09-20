@@ -16,17 +16,27 @@ export class EditarvehiculoComponent implements OnInit {
   _id:string=""
 
   data:any
+
+  
   ngOnInit() {
     this.id="e"
 
     
 
     this.servicio.getData().subscribe(msg=>{
-
+      
       this.data=msg
+
+      if(!this.data)throw "";
+
+
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
+
+ 
+
+     return true
 
   }
   editar1() {
@@ -38,8 +48,12 @@ export class EditarvehiculoComponent implements OnInit {
      
      } catch(e) {
        console.log(e); 
+       throw "";
      }
      if (esvalido)this.editarvehiculo()
+
+     return true
+
   }
 
   Traervehiculo(){
@@ -56,9 +70,18 @@ export class EditarvehiculoComponent implements OnInit {
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
+
+     return true
+
   }
   editarvehiculo(){
     const body = { id:this.id,nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
+
+    
+    if(!this.id || ! this.nombre || !this.placa || !this.modelo )  {
+      this.servicio.message("Hay valores nulos, revise","error")
+      throw new Error('fallo edición')  }
+
 
     console.log("el server da ",body); 
     // getPuturl
@@ -71,6 +94,8 @@ export class EditarvehiculoComponent implements OnInit {
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
   
+     return true
+
   }
   
   Editar(nombre,placa,modelo,id){
@@ -78,20 +103,16 @@ export class EditarvehiculoComponent implements OnInit {
     if(!nombre || !placa || !modelo || !id )  {
       this.servicio.message("Hay valores nulos, revise","error")
       throw new Error('fallo edición')  }
-    if(nombre.length<1 || placa.length<1|| modelo.length<1|| id.length<1)  {
+   /*  if(nombre.length<1 || placa.length<1|| modelo.length<1|| id.length<1)  {
         this.servicio.message("Hay valores vacios, revise","error")
         throw new Error('fallo edición')   }
-
+ */
 
  return true
     
   }
 
-  Editar2(nombre,placa,modelo,id){
-
-    return true
-
-  }
+  
 
 
 }

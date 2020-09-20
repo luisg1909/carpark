@@ -51,11 +51,11 @@ export class ServicioService {
   get_domain() { 
 
     //  return "https://learn-287403.uc.r.appspot.com"
-   return "http://localhost:3000"
+   return this.url
 
     
   }
-
+  url="http://localhost:3000"
   getPosturl(name:string,form):any{
     if(name.length<1 || form==null)  {
       throw new Error('fallo')

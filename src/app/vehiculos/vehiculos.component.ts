@@ -39,6 +39,9 @@ export class VehiculosComponent implements OnInit {
        console.log(e); 
      }
      if (esvalido)this.ingresarvehiculo()
+
+     return true
+
   }
   ingresarvehiculo(){
    /*  const formData = new FormData();
@@ -55,6 +58,8 @@ export class VehiculosComponent implements OnInit {
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
+
+     return true
   }
   Registro(nombre:string,placa:string,modelo:string){
 

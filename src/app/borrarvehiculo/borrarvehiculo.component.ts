@@ -20,6 +20,7 @@ export class BorrarvehiculoComponent implements OnInit {
      this.servicio.message("Ocurrio un error ","error") 
      console.log(err); throw "";}); 
 
+     return true
 
   }
 id:string=""
@@ -34,6 +35,9 @@ id:string=""
        console.log(e); 
      }
      if (esvalido)this.borrarvehiculo()
+
+     return true
+
   }
   borrarvehiculo(){
 
@@ -42,7 +46,14 @@ id:string=""
 
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+     console.log(err); throw "";
+     throw new Error('fallo')   
+
+    }); 
+
+
+     return true
+
   }
 
   Borrar(id:string) {

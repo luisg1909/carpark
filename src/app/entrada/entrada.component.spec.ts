@@ -33,7 +33,71 @@ describe('EntradaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('probar que crear retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.crear();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
   });
+
+  it('probar que editar retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.editar();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
+
+  
+  it('probar que borrar retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.borrar();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
+  
+
+  it('probar que generar retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.generar();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
 });

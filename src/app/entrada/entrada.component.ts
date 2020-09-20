@@ -18,15 +18,23 @@ export class EntradaComponent implements OnInit {
 
   this.ticket=  this.servicio.obtenerhora()
   this.servicio.generarhora(this.ticket)
+  return true
+
  }
  crear(){
   this.router.navigate(['/ingresov']);
+        return true
+
  }
  editar(){
   this.router.navigate(['/editarv']);
+  return true
+
  }
  borrar(){
   this.router.navigate(['/borrarv']);
+  return true
+
  }
 
   ngOnInit() {

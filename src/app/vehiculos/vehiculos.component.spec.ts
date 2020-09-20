@@ -101,4 +101,42 @@ describe('VehiculosComponent', () => {
       } ).toThrow(new Error("fallo registro"));
 
   });
+
+
+
+  it('probar que ingresarvehiculo retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.ingresarvehiculo();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
+  
+  it('probar que generar retorne true', () => {
+    // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+    
+    expect( function(){ 
+    
+      
+       let result=component.generar();
+       expect(true).toBeTruthy()
+
+       
+
+      } ).not.toThrow();
+
+  });
+
+
+
+
 });

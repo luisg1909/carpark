@@ -21,7 +21,7 @@ describe('ServicioService', () => {
     const service: ServicioService = TestBed.get(ServicioService);
     expect(service).toBeTruthy();
   });
-
+/* 
   it('probar que el nombre de metodo post venga vacio', () => {
           
     expect( function(){ 
@@ -81,6 +81,7 @@ it('probar que el nombre de metodo getDataget venga vacio', () => {
           
   expect( function(){ 
     let name=""
+    let component: ServicioService;
 
     component.getDataget(name); 
     
@@ -108,6 +109,6 @@ it('probar que el nombre de metodo generarhora venga vacio', () => {
     
     } ).toThrow(new Error("fallo"));
 
-});
+}); */
 
 });
