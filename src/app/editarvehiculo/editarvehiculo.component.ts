@@ -13,9 +13,21 @@ export class EditarvehiculoComponent implements OnInit {
   placa:string=""
   modelo:string=""
   id:string=""
+  _id:string=""
 
+  data:any
   ngOnInit() {
     this.id="e"
+
+    
+
+    this.servicio.getData().subscribe(msg=>{
+
+      this.data=msg
+   ;}, err=>{
+     this.servicio.message("Ocurrio un error ","error") 
+     console.log(err); throw "";}); 
+
   }
   editar1() {
 
@@ -29,8 +41,38 @@ export class EditarvehiculoComponent implements OnInit {
      }
      if (esvalido)this.editarvehiculo()
   }
-  editarvehiculo(){
+
+  Traervehiculo(){
+
+    this.servicio.getDataget(this._id).subscribe(msg=>{
+    console.log('las preguntas son->',msg);
+    console.log('el names es ->',msg ["nombre"]);
+
+    this.nombre=msg ["nombre"]
+    this.placa=msg ["placa"]
+    this.modelo=msg ["modelo"]
+    this.id=msg ["_id"]
+
+   ;}, err=>{
+     this.servicio.message("Ocurrio un error ","error") 
+     console.log(err); throw "";}); 
   }
+  editarvehiculo(){
+    const body = { id:this.id,nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
+
+    console.log("el server da ",body); 
+    // getPuturl
+    
+
+    this.servicio.getPuturl("vehiculos", this.id,body).subscribe(msg=>{
+      this.servicio.message("vehiculo editado correctamente","success") 
+
+   ;}, err=>{
+     this.servicio.message("Ocurrio un error ","error") 
+     console.log(err); throw "";}); 
+  
+  }
+  
   Editar(nombre,placa,modelo,id){
 
     if(!nombre || !placa || !modelo || !id )  {

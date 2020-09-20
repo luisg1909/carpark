@@ -41,7 +41,22 @@ export class VehiculosComponent implements OnInit {
      if (esvalido)this.ingresarvehiculo()
   }
   ingresarvehiculo(){
+   /*  const formData = new FormData();
+    formData.append('nombre',  this.nombre);
+    formData.append('placa', this.placa);
+    formData.append('modelo', this.modelo);
+ */
+    const body = { nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
+
     
+
+
+    this.servicio.getPosturl("vehiculos",body).subscribe(msg=>{
+      this.servicio.message("vehiculo creado correctamente","success") 
+
+   ;}, err=>{
+     this.servicio.message("Ocurrio un error ","error") 
+     console.log(err); throw "";}); 
   }
   Registro(nombre:string,placa:string,modelo:string){
 

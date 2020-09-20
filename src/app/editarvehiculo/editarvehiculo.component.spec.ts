@@ -114,7 +114,41 @@ describe('EditarvehiculoComponent', () => {
   });
 
 
+/*  describe('when fetching all stuff', () => {
+    it('should make a GET request', async(() => {
+        
+      // exampleService.getStuff();
+      
+        let req = httpMock.expectOne('.././exam.json');
+        expect(req.request.method).toEqual('GET');
+          req.flush([]);
+    }));
+});  */
+/* 
+    it('Debe ser metodo get el que obtiene las preguntas', async(() => {
 
 
+      // const service: ServiciosService = TestBed.get(ServiciosService);
+
+
+      const request = httpMock.expectOne('http://localhost:3000/preguntas');
+      expect(request.request.method).toBe('GET');
+    
+    
+    
+  
+
+  
+  
+    })); 
+   */
+
+
+    
+
+
+    afterEach(() => {
+      httpMock.verify();
+  })
 
 });

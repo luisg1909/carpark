@@ -10,6 +10,7 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { FormsModule } from '@angular/forms';
 import { EditarvehiculoComponent } from './editarvehiculo/editarvehiculo.component';
 import { BorrarvehiculoComponent } from './borrarvehiculo/borrarvehiculo.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BorrarvehiculoComponent } from './borrarvehiculo/borrarvehiculo.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
 
   ],
   providers: [],

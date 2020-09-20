@@ -1,0 +1,57 @@
+.main-div{
+    // height: 100vh;
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 12%;
+  }
+
+  .my-class2{
+    background-color:white;
+    color:blue;
+    width:73px;
+
+}
+.font1{
+    font-size:27px
+  }
+
+.conta{
+    padding: 1%;
+width: 52%;
+
+}
+.conta2{
+     padding-bottom: 3%;
+width: 52%;
+padding-left:33% ;
+
+}
+.my-class{
+  
+    padding-left: 12%;
+    padding-top: 2%;
+
+}
+
+
+
+.conta7{
+    padding-top: 5%;
+
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

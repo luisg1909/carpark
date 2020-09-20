@@ -21,6 +21,11 @@
 width: 52%;
 
 }
+
+.conta7{
+    padding-top: 5%;
+
+}
 .conta2{
      padding-bottom: 3%;
 width: 52%;
@@ -33,3 +38,23 @@ padding-left:33% ;
     padding-top: 2%;
 
 }
+
+.conta7{
+    padding-top: 5%;
+
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

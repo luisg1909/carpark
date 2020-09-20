@@ -16,7 +16,7 @@ describe('VehiculosComponent', () => {
          RouterTestingModule,
        
          FormsModule, ReactiveFormsModule,
-       
+         HttpClientTestingModule,
         RouterTestingModule.withRoutes([]),
 
        ],

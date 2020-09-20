@@ -3,6 +3,7 @@ import { ServicioService } from '.././servicio.service';
 import { VehiculosComponent } from '.././vehiculos/vehiculos.component';
 import { Router } from '@angular/router';
 import { EditarvehiculoComponent } from '.././editarvehiculo/editarvehiculo.component';
+import { BorrarvehiculoComponent } from '.././borrarvehiculo/borrarvehiculo.component';
 
 @Component({
   selector: 'app-entrada',
@@ -24,7 +25,9 @@ export class EntradaComponent implements OnInit {
  editar(){
   this.router.navigate(['/editarv']);
  }
-
+ borrar(){
+  this.router.navigate(['/borrarv']);
+ }
 
   ngOnInit() {
     //test

@@ -1,1 +1,41 @@
-<p>borrarvehiculo works!</p>
+<div class="conta">
+</div>
+<div class="conta2">
+
+    <h1 class="font1">
+        Id de vehiculo:
+    </h1>
+    <div class="example-button-row">
+        <input type="text"    [(ngModel)]="id" >
+        <button mat-raised-button (click)="Borrar1()"  color="warn">Borrar </button>
+    </div>
+    
+</div>
+
+
+
+
+
+<div class="conta7">
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>id</th>
+        <th>nombre</th>
+        <th>placa</th>
+        <th>modelo</th>
+  
+      </tr>
+  
+    <tr *ngFor="let item of data; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{item._id}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.placa}}</td>
+      <td>{{item.modelo}}</td>
+  
+  </tr>
+  </table>
+  
+  </div>
+  
