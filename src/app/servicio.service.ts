@@ -25,7 +25,10 @@ export class ServicioService {
 
   message(a,type) {
  
-
+    if(a.length<1 )  {
+      throw new Error('fallo')
+       }
+       
     Swal.fire({
       title: 'Mensaje!',
       text: a,
@@ -36,6 +39,9 @@ export class ServicioService {
 
   generarhora(a){
 
+  if(a.length<1 )  {
+    throw new Error('fallo')
+     }
     this.hora=a
   }
   gethora(){
@@ -50,27 +56,39 @@ export class ServicioService {
     
   }
 
-  getPosturl(name,form):any{
+  getPosturl(name:string,form):any{
+    if(name.length<1 || form==null)  {
+      throw new Error('fallo')
+       }
     return this.http.post(this.get_domain()+'/'+name,form)
 }
-getPuturl(name,id,form):any{
+getPuturl(name:string,id:string,form):any{
+  if(name.length<1 ||id.length<1  ||form==null)  {
+    throw new Error('fallo')
+     }
   return this.http.put(this.get_domain()+'/'+name+"/"+id,form)
 }
-getdeleteur(name,id):any{
+getdeleteur(name:string,id):any{
+  if(name.length<1 ||id.length<1 )  {
+    throw new Error('fallo')
+     }
   return this.http.delete(this.get_domain()+'/'+name+"/"+id)
 }
-getDataget(id){
+getDataget(id:string){
+  if(id.length<1 )  {
+    throw new Error('fallo')
+     }
   return this.http.get(this.get_domain()+'/vehiculos/'+id)
 }
 getData(){
   return this.http.get(this.get_domain()+'/vehiculos/')
 }
-  getStuff() {
+/*   getStuff() {
     let params = new HttpParams().append('testparam', 'testvalue')
     return this.http.get('./assets/mock/modules.json').toPromise().then(value => {
         return value
     })
-}
+} */
 
 
 }

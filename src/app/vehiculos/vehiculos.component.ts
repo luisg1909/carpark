@@ -48,8 +48,6 @@ export class VehiculosComponent implements OnInit {
  */
     const body = { nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
 
-    
-
 
     this.servicio.getPosturl("vehiculos",body).subscribe(msg=>{
       this.servicio.message("vehiculo creado correctamente","success") 
