@@ -299,7 +299,30 @@ describe('EditarvehiculoComponent', () => {
 
         
       });
+      it('probar que edite  el vehiculo en un llamado asincrono con un dato real', () => {
+        // var spytoUpperCase = spyOn(String.prototype, 'toUpperCase').and.returnValue("HELLO WORLD"); 
+        
+        expect( function(){ 
+        
+      
+          component.nombre="mazda 2001"
+          component.placa="1255551"
+          component.modelo="2001-b"    
+          component.id="2001-b"    
 
+           let result=component.editasincronot().subscribe(msg=>{
+            msg.subscribe(msg=>{
+      
+          }); 
+         ;}, err=>{
+          throw "";
+      
+          }); 
+      
+          } ).not.toThrow();
+    
+      });
+    
   it('cargar placa, nombre,modelo,id,_id,', () => {
 
 

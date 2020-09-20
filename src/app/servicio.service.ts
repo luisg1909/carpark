@@ -25,7 +25,7 @@ export class ServicioService {
 
   message(a,type) {
  
-    if(a.length<1 )  {
+    if(a.length<1 || type.length<1)  {
       throw new Error('fallo')
        }
        
@@ -62,12 +62,12 @@ export class ServicioService {
        }
     return this.http.post(this.get_domain()+'/'+name,form)
 } */
-getPuturl(name:string,id:string,form):any{
+/* getPuturl(name:string,id:string,form):any{
   if(name.length<1 ||id.length<1  ||form==null)  {
     throw new Error('fallo')
      }
   return this.http.put(this.get_domain()+'/'+name+"/"+id,form)
-}
+} */
 /* getdeleteur(name:string,id):any{
   if(name.length<1 ||id.length<1 )  {
     throw new Error('fallo')
@@ -100,6 +100,10 @@ async getPosturlas(name:string,form){
 
 async borrarasincrono(name:string,id){
   return await this.http.delete(this.get_domain()+'/'+name+"/"+id)
+}
+
+async editasincrono(name:string,id:string,form){
+  return await this.http.put(this.get_domain()+'/'+name+"/"+id,form)
 }
 /*   getStuff() {
     let params = new HttpParams().append('testparam', 'testvalue')

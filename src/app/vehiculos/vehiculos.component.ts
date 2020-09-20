@@ -19,7 +19,7 @@ export class VehiculosComponent implements OnInit {
   ngOnInit() {
     this.Hora=  this.servicio.gethora()
 
-     console.log('this.Hora es '+ this.Hora);
+    //  console.log('this.Hora es '+ this.Hora);
 
 
   }
@@ -28,19 +28,19 @@ export class VehiculosComponent implements OnInit {
     this.Registro(this.nombre,this.placa,this.Hora
       ,this.parqueo,this.nivel)
  */
-      console.log('this.nombre es '+ this.nombre);
+   /*    console.log('this.nombre es '+ this.nombre);
       console.log('this.placa es '+ this.placa);
       console.log('this.modelo es '+ this.modelo);
-
+ */
       let esvalido=false
       try {
         esvalido=this.Registro(this.nombre,this.placa,this.modelo)
      
      
      } catch(e) {
-       console.log(e); 
+      //  console.log(e); 
      }
-     if (esvalido)this.ingresarvehiculo()
+    this.ingresarvehiculo()
 
      return true
 
@@ -73,7 +73,8 @@ export class VehiculosComponent implements OnInit {
 
    ;}, err=>{
      this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+    //  console.log(err); 
+     throw "";}); 
 
      return true
   }

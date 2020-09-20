@@ -10,7 +10,7 @@ import { from } from 'rxjs';
 export class BorrarvehiculoComponent implements OnInit {
 
   constructor(private servicio:ServicioService) { }
-  data:any
+  // data:any
 
   getdatalist(){
     let ob =  this.servicio.getDataas( )
@@ -18,7 +18,7 @@ export class BorrarvehiculoComponent implements OnInit {
     return obs1    
   }
   ngOnInit() {
-
+/* 
     this. getdatalist().subscribe(datu=>{
       console.log(datu); 
      datu.pipe().subscribe(msg=>{
@@ -29,8 +29,8 @@ export class BorrarvehiculoComponent implements OnInit {
   ;}); 
     }); 
 
-     return true
-
+    */
+   return true
   }
 id:string=""
   Borrar1() {
@@ -41,9 +41,9 @@ id:string=""
      
      
      } catch(e) {
-       console.log(e); 
+      //  console.log(e); 
      }
-     if (esvalido)this.borrarvehiculo()
+  this.borrarvehiculo()
 
      return true
 
@@ -52,9 +52,12 @@ id:string=""
   borrarvehiculot(){
 
 
+   
       let ob =  this.servicio.borrarasincrono("vehiculos", this.id )
       let obs1 = from(ob);
-      return obs1      
+      return obs1    
+   
+    
    
   
      
@@ -62,18 +65,21 @@ id:string=""
 
   borrarvehiculo(){
 
-    this.borrarvehiculot().subscribe(msg=>{
-      msg.subscribe(msg=>{
+      this.borrarvehiculot().subscribe(msg=>{
+        msg.subscribe(msg=>{
+  
+        this.servicio.message("vehiculo Borrado correctamente","success") 
+      }); 
+     ;}, err=>{
+       this.servicio.message("Ocurrio un error ","error") 
+      //  console.log(err); throw "";
+       throw new Error('fallo')   
+  
+      }); 
+  
+   
 
-      this.servicio.message("vehiculo Borrado correctamente","success") 
-    }); 
-   ;}, err=>{
-     this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";
-     throw new Error('fallo')   
-
-    }); 
-
+    
 
      return true
 

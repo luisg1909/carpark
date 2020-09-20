@@ -156,7 +156,6 @@ describe('VehiculosComponent', () => {
     
       
        let result=component.generar();
-       expect(true).toBeTruthy()
 
        
 

@@ -77,7 +77,8 @@ describe('BorrarvehiculoComponent', () => {
 
        let result=component.borrarvehiculot().subscribe(msg=>{
         msg.subscribe(msg=>{
-  
+          expect(msg).not.toEqual('');
+
       }); 
      ;}, err=>{
       throw "";

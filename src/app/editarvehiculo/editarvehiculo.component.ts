@@ -17,7 +17,7 @@ export class EditarvehiculoComponent implements OnInit {
   id:string=""
   _id:string=""
 
-  data:any
+   data:any
 
   getdatalist(){
     let ob =  this.servicio.getDataas( )
@@ -27,7 +27,7 @@ export class EditarvehiculoComponent implements OnInit {
   ngOnInit() {
 
     this. getdatalist().subscribe(datu=>{
-      console.log(datu); 
+      // console.log(datu); 
      datu.pipe().subscribe(msg=>{
       this.data=msg
 
@@ -35,20 +35,8 @@ export class EditarvehiculoComponent implements OnInit {
       
   ;}); 
     }); 
-
-    // this.id="e"
-
-/*     this.servicio.getData().subscribe(msg=>{
-      
-      this.data=msg
-
-
-
-   ;}, err=>{
-     this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";});  */
-
  
+
 
      return true
 
@@ -61,11 +49,11 @@ export class EditarvehiculoComponent implements OnInit {
      
      
      } catch(e) {
-       console.log(e); 
+      //  console.log(e); 
        throw "";
      }
-     if (esvalido)this.editarvehiculo()
-
+  this.editarvehiculo()
+  // if (esvalido)
      return true
 
 
@@ -85,9 +73,9 @@ let observable = from(ob);
 observable.subscribe(datu=>{ */
 
   this. Traervehiculo9().subscribe(datu=>{
-   console.log(datu); 
+  //  console.log(datu); 
   datu.pipe().subscribe(msg=>{
-    console.log(msg); 
+    // console.log(msg); 
 
   this.nombre=msg ["nombre"]
   this.placa=msg ["placa"]
@@ -99,7 +87,8 @@ observable.subscribe(datu=>{ */
     this.nombre=null
 
      this.servicio.message("Ocurrio un error ","error") 
-     console.log(err); throw "";}); 
+    //  console.log(err);
+     throw "";}); 
     }); 
      return true
 
@@ -109,7 +98,7 @@ observable.subscribe(datu=>{ */
   editarvehiculo(){
     const body = { id:this.id,nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
 
-    console.log("el bodyname es  ",body.nombre);
+    // console.log("el bodyname es  ",body.nombre);
     if(!this.id || ! this.nombre || !this.placa || !this.modelo )  {
        this.servicio.message("Hay valores nulos, revise","error")
        throw new Error('fallo edición')
@@ -117,19 +106,40 @@ observable.subscribe(datu=>{ */
       }
 
 
-    console.log("el server da ",body); 
+    // console.log("el server da ",body); 
     // getPuturl
     
 
-    this.servicio.getPuturl("vehiculos", this.id,body).subscribe(msg=>{
+  /*   this.servicio.getPuturl("vehiculos", this.id,body).subscribe(msg=>{
        this.servicio.message("vehiculo editado correctamente","success") 
 
-   ;}); 
+   ;});  */
   
+   this.editasincronot().subscribe(msg=>{
+    msg.subscribe(msg=>{
+    this.servicio.message("vehiculo editado correctamente","success") 
+    ;});
+;}); 
      return true
 
   }
   
+
+  editasincronot(){
+
+    const body = { id:this.id,nombre:  this.nombre,placa:  this.placa,modelo:  this.modelo }
+
+    let ob =  this.servicio.editasincrono("vehiculos", this.id,body )
+    let obs1 = from(ob);
+    return obs1      
+ 
+
+   
+}
+
+
+
+
   Editar(nombre,placa,modelo,id){
 
     if(!nombre || !placa || !modelo || !id )  {
