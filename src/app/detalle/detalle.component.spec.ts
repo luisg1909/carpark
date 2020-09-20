@@ -15,6 +15,7 @@ import {
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 
 describe('DetalleComponent', () => {
   let component: DetalleComponent;
@@ -24,7 +25,7 @@ describe('DetalleComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ DetalleComponent ],
       imports: [
-
+        HttpClientTestingModule,
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
@@ -56,7 +57,8 @@ describe('DetalleComponent', () => {
   });
 
   it('cargar tabla', () => {
-    expect(component.cargarTabla()).toBeDefined();;
+    
+    expect(component.cargarTabla()).not.toBeDefined();;
   });
 
 

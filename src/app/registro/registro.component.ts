@@ -16,7 +16,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
-
+  info:string;
   public nombre:string;
 
   loginform: FormGroup;
@@ -68,8 +68,16 @@ export class RegistroComponent implements OnInit {
 
   }
 
-  validarDPI(dpi:any){
-    return true;
+  validarDPI(Fdpi:string){
+
+    if (Fdpi.length==13) {
+      console.log('si cumple con 13 digitos');
+      return true;  
+    }else{
+      return false;
+    }
+
+    
   }
 
   crear(){
@@ -83,17 +91,32 @@ export class RegistroComponent implements OnInit {
     var Ftelefono=this.loginform.controls['telFormControl'].value;
     var Fdpi=this.loginform.controls['dpiFormControl'].value;
 
-    const jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
+    if(this.validarDPI(Fdpi.toString())){
+      const jsonData={nombre:Fnombre,apellido:Fapellido,telefono:Ftelefono,dpi:Fdpi}
+      this.servicio.NuevoUsuario('usuarios',jsonData).subscribe(inf=>{
+        console.log(inf);
+        this.servicio.message("Usuario creado correctamente","success");
+        this.info='success';
+      },err=>{
+        this.servicio.message("Ocurrio un error ","error") 
+        console.log(err); throw "";
+        this.info='error';
+      })
+    }else{
+      this.info='error';
+    }
 
     
-    this.servicio.NuevoUsuario('usuarios',jsonData).subscribe(inf=>{
-      console.log(inf);
-      this.servicio.message("Usuario creado correctamente","success") 
-    },err=>{
-      this.servicio.message("Ocurrio un error ","error") 
-      console.log(err); throw "";
- 
-    })
+
+    
+  }
+
+  registro(msg:string){
+    if (msg=='success') {
+      return 'success';
+    } else {
+      return 'error';
+    }
   }
 
 }

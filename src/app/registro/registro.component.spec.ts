@@ -16,6 +16,7 @@ import {
 } from "@angular/material";
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
 
 
 describe('RegistroComponent', () => {
@@ -26,7 +27,7 @@ describe('RegistroComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ RegistroComponent ],
       imports: [
-
+        HttpClientTestingModule,
         MatButtonModule,
         MatFormFieldModule,
         MatIconModule,
@@ -67,8 +68,11 @@ describe('RegistroComponent', () => {
   });*/
 
   it("validar dpi", function() {
-    expect(component.validarDPI(true)).toBe(true);
+    let dpi='2984413810101';
+    //let dpi=true;
+    expect(component.validarDPI(dpi)).toBe(true);
   });
+
 
   it("validar nombre", function() {
     expect(component.nombre).not.toBeNull();

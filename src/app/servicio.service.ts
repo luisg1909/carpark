@@ -32,5 +32,13 @@ export class ServicioService {
     return this.http.post(this.get_domain()+'/'+name,form);
   }
 
+  getUsuarios(){
+    return this.http.get(this.get_domain()+'/'+'usuarios');
+  }
+
+  eliminarUsuario(id){
+    return this.http.delete(this.get_domain()+'/'+'usuarios/'+id);
+  }
+
 
 }
